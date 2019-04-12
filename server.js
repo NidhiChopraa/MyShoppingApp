@@ -11,12 +11,12 @@ app.use(express.urlencoded({
     extended: true
   }))
 
-
+  const PORT = process.env.PORT || 4444  
 
 //console.log(require('./routes/api/').route)
 app.use('/',express.static(path.join(__dirname + '/public')))
 app.use('/api',require('./routes/api/').route)
 db.sync()
   .then(() => {
-    app.listen(8282,()=>console.log('server started'))
+    app.listen(PORT,()=>console.log('server started'))
   })
